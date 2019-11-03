@@ -29,12 +29,17 @@
                 <div class="post-full-byline">
                     <section class="post-full-byline-content">
 
+                        {{ if .Param "author" }}
+                            {{- partial "post-author.html" . -}}
+                        {{ end }}
+
                         <section class="post-full-byline-meta">
+                            {{ if .Param "author" }}
+                                <h4 class="author-name">{{ .Param "author" }}</h4>
+                            {{ end }}
                             <div class="byline-meta-content">
                                 <time class="byline-meta-date" datetime="{{.Date.Format "2006-31-01"}}">{{.Date.Format "2 January 2006"}}</time>
-                                {{ if .Param "read_time" }}
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{ .Param "read_time" }} read</span>
-                                {{ end }}
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{ .ReadingTime }} min read</span>
                             </div>
                         </section>
 
