@@ -21,6 +21,7 @@ Posts should be created under the 'post' content type, e.g. `hugo new post/examp
 
 The theme has been tested and is working with these versions of Hugo. It should work with others, but if you want to add another officially supported version give it a test and make a pull request to update this.
 
+- 0.54.0
 - 0.55.5
 
 ## Development Roadmap

@@ -4,7 +4,7 @@ licenselink = "https://github.com/jonathanjanssens/hugo-casper3/blob/master/LICE
 description = "The default Casper version 3 theme from Ghost CMS ported over to Hugo"
 tags = ["blog", "dark", "light"]
 features = ["darkmode"]
-min_version = "0.55.5"
+min_version = "0.54.0"
 
 [author]
   name = "Jonathan Janssens"
