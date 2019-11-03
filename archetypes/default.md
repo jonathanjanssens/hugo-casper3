@@ -1,2 +1,3 @@
 +++
+feature_image = ""
 +++
