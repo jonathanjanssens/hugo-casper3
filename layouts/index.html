@@ -1,0 +1,34 @@
+{{ define "body_class" }} home-template {{ end }}
+
+{{ define "main" }}
+
+<header class="site-home-header">
+    {{- partial "header-background.html" . -}}
+        <div class="inner">
+            {{- partial "site-nav.html" . -}}
+            <div class="site-header-content">
+                <h1 class="site-title">
+                    {{ if $.Site.Params.logo }}
+                        <img class="site-logo" src="{{ $.Site.Params.logo }}" alt="{{ .Site.Title }}" />
+                    {{ else }}
+                        {{ $.Site.Title }}
+                    {{ end }}
+                </h1>
+                <h2 class="site-description">{{ $.Site.Params.description }}</h2>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="post-feed">
+            {{ range $index, $element := where $.Pages "Type" "post" }}
+                {{- partial "post-card.html" (dict "context" . "index" $index "home" $.IsHome) -}}
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+{{ end }}

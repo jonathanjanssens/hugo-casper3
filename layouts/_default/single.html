@@ -1,0 +1,66 @@
+{{ define "body_class" }} post-template {{ end }}
+
+{{ define "main" }}
+
+<header class="site-header">
+    {{- partial "site-header.html" $ -}}
+</header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post {{ if not (.Param "featured_image") }} no-image {{ end }}">
+
+            <header class="post-full-header">
+
+                {{ with .Params.tags }}
+                    {{ $primaryTag := (index . 0) }}
+                    <section class="post-full-tags">
+                        <a href="{{ "/tags/" | relLangURL }}{{ $primaryTag | urlize }}">{{ $primaryTag }}</a>
+                    </section>
+                {{ end }}
+
+                <h1 class="post-full-title">{{ .Title }}</h1>
+
+                {{ if .Param "summary" }}
+                    <p class="post-full-custom-excerpt">{{ .Summary }}</p>
+                {{ end }}
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <section class="post-full-byline-meta">
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="{{.Date.Format "2006-31-01"}}">{{.Date.Format "2 January 2006"}}</time>
+                                {{ if .Param "read_time" }}
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{ .Param "read_time" }} read</span>
+                                {{ end }}
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            {{ if .Param "feature_image" }}
+            <figure class="post-full-image">
+                <img src="{{ .Param "feature_image" }}" alt="{{ .Title }}" />
+            </figure>
+            {{ end }}
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    {{ .Content }}
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+
+{{- partial "post-navigation.html" . -}}
+
+{{ end }}

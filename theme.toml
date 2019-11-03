@@ -1,0 +1,19 @@
+name = "casper3"
+license = "MIT"
+licenselink = "https://github.com/jonathanjanssens/hugo-casper3/blob/master/LICENSE"
+description = "The default Casper version 3 theme from Ghost CMS ported over to Hugo"
+tags = ["blog", "dark", "light"]
+features = ["darkmode"]
+min_version = "0.55.5"
+
+[author]
+  name = "Jonathan Janssens"
+  homepage = "https://jonathanjanssens.com/hugo-casper3"
+  repo = "https://github.com/jonathanjanssens/projects/hugo-casper3"
+
+[original]
+  name = "Ghost"
+  homepage = "https://ghost.org"
+  repo = "https://github.com/TryGhost/Casper"
+
+  

@@ -1,0 +1,19 @@
+<nav class="site-nav">
+    <div class="site-nav-left">
+        {{ if eq $.Site.Params.logo "thisshouldfail" }}
+            <a class="site-nav-logo" href="{{ $.Site.BaseURL }}"><img src="{{ $.Site.Params.logo }}" alt="{{ $.Site.Title }}" /></a>
+        {{ else }}
+            <a class="site-nav-logo" href="{{ $.Site.BaseURL }}">{{ $.Site.Title }}</a>
+        {{ end }}
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                {{ range $.Site.Menus.main }}
+                <li class="nav-home" role="menuitem"><a href="{{ .URL }}">{{- .Name -}}</a></li>
+                {{ end }}
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+

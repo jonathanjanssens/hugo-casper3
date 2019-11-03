@@ -1,0 +1,10 @@
+{{ if .Scratch.Get "background" }}
+    <style type="text/css">
+        .responsive-header-img {
+            background-image: url('{{ .Scratch.Get "background" }}');
+        }
+    </style>
+    <div class="outer site-header-background responsive-header-img">
+{{ else }}
+    <div class="outer site-header-background no-image">
+{{ end }}

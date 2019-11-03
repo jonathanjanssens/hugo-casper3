@@ -1,0 +1,32 @@
+{{ define "body_class" }} tag-template  {{ end }}
+
+{{ define "main" }}
+
+<header class="site-header">
+    {{- partial "site-header.html" $ -}}
+
+    {{- partial "header-background.html" $ -}}
+        <div class="inner site-header-content">
+            <h1 class="site-title">{{ .Title }}</h1>
+            <h2 class="site-description">
+                {{ if .Param "description" }}
+                    {{ .Param "description" }}
+                {{ else }}
+                    A collection of {{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}
+                {{ end }}
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="post-feed">
+            {{ range $index, $element := .Pages }}
+                {{- partial "post-card.html" (dict "context" . "index" $index "home" $.IsHome) -}}
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+{{ end }}
