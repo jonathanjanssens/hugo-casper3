@@ -8,7 +8,7 @@ min_version = "0.54.0"
 
 [author]
   name = "Jonathan Janssens"
-  homepage = "https://jonathanjanssens.com/hugo-casper3"
+  homepage = "https://jonathanjanssens.com"
   repo = "https://github.com/jonathanjanssens/projects/hugo-casper3"
 
 [original]
