@@ -15,19 +15,13 @@ Either set the theme in your config to `casper3` or build with the `-t casper3` 
 
 This theme is very image heavy so it is recommended to set a `feature_image` parameter in the front matter of any content.
 
-Posts should be created under the 'post' content type, e.g. `hugo new post/example-post.md`.
-
-## Supported Hugo Versions
-
-The theme has been tested and is working with these versions of Hugo. It should work with others, but if you want to add another officially supported version give it a test and make a pull request to update this.
-
-- 0.54.0
-- 0.55.5
+Content types you wish to appear on the homepage should be set in your [mainSections](https://gohugo.io/functions/where/#mainsections).
 
 ## Development Roadmap
 
-[] Use SCSS from original theme instead of compiled CSS - also needs Hugo Pipes setting up
-[] Multi author support and author taxonomy
+[ ] Use SCSS from original theme instead of compiled CSS - also needs Hugo Pipes setting up
+
+[ ] Multi author support and author taxonomy
 
 ## Support
 
