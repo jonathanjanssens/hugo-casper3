@@ -3,6 +3,7 @@
 {{ define "main" }}
 
 <header class="site-home-header">
+    {{ .Scratch.Set "background" .Params.feature_image }}
     {{- partial "header-background.html" . -}}
         <div class="inner">
             {{- partial "site-nav.html" . -}}
