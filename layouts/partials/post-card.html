@@ -9,11 +9,11 @@
                 <img class="post-card-image"src="{{ .context.Param "feature_image" }}" alt="{{ .context.Title }}"/>
             </a>
         {{ end }}
-    
+
         <div class="post-card-content">
-    
+
             <a class="post-card-content-link" href="{{ .context.Permalink }}">
-    
+
                 <header class="post-card-header">
                     {{ with .context.Params.tags }}
                         {{ $primaryTag := (index . 0) }}
@@ -22,28 +22,28 @@
 
                     <h2 class="post-card-title">{{ .context.Title }}</h2>
                 </header>
-    
+
                 <section class="post-card-excerpt">
                     <p>{{ .context.Summary }}</p>
                 </section>
-    
+
             </a>
 
             <footer class="post-card-meta">
-                    <ul class="author-list">
-                        <li class="author-list-item">
-                            <div class="author-name-tooltip">{{ .context.Param "author" }}</div>
-                            <a href="https://test.com" class="static-avatar author-profile-image">{{- partial "icons/avatar.html" -}}</a>
-                        </li>
-                    </ul>
-                    <div class="post-card-byline-content">
-                        <span>{{ .context.Param "author" }}</span>
-                        <span class="post-card-byline-date"><time datetime="{{ .context.Date.Format "2006-31-01" }}">{{ .context.Date.Format "2 January 2006" }}</time>
-                            <span class="bull">&bull;</span> {{ .context.ReadingTime }} min read</span>
-                    </div>
-                </footer>
-    
+                {{ if .context.Param "authors" }}
+                    {{- partial "post-card-authors.html" .context -}}
+                {{ end }}
+                <div class="post-card-byline-content">
+                    {{ if .context.Param "authors" }}
+                    <span>
+                        {{- partial "post-author-names.html" .context -}}
+                    </span>
+                    {{ end }}
+                    <span class="post-card-byline-date"><time datetime="{{ .context.Date.Format "2006-31-01" }}">{{ .context.Date.Format "2 January 2006" }}</time>
+                        <span class="bull">&bull;</span> {{ .context.ReadingTime }} min read</span>
+                </div>
+            </footer>
+
         </div>
 
 </article>
-    

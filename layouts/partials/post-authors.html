@@ -1,0 +1,37 @@
+<ul class="author-list">
+    {{- range .Params.authors }}
+    {{- with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize .)) }}
+    <li class="author-list-item">
+
+        <div class="author-card">
+            {{ if .Params.profile_image }}
+            <img class="author-profile-image" src="{{ .Params.profile_image }}" alt="{{ .Params.name }}" />
+            {{ else }}
+            <div class="author-profile-image">{{- partial "icons/avatar.html" -}}</div>
+            {{ end }}
+            <div class="author-info">
+                {{ if .Content }}
+                <div class="bio">
+                    <h2>{{ .Params.name }}</h2>
+                    <p>{{ .Content }}</p>
+                    <p><a href="{{ .Permalink }}">More posts</a> by {{ .Params.name }}.</p>
+                </div>
+                {{ else }}
+                <h2>{{ .Params.name }}</h2>
+                <p>Read <a href="{{ .Permalink }}">more posts</a> by this author.</p>
+                {{ end }}
+            </div>
+        </div>
+
+        {{ if .Params.profile_image }}
+        <a href="{{ .Permalink }}" class="author-avatar">
+            <img class="author-profile-image" src="{{ .Params.profile_image }}" alt="{{ .Params.name }}" />
+        </a>
+        {{ else }}
+        <a href="{{ .Permalink }}" class="author-avatar author-profile-image">{{- partial "icons/avatar.html" -}}</a>
+        {{ end }}
+
+    </li>
+    {{ end }}
+    {{ end }}
+</ul>
