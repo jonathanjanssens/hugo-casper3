@@ -1,0 +1,67 @@
+{{ define "main" }}
+
+<header class="site-archive-header">
+    {{- partial "site-header.html" $ -}}
+
+    {{ .Scratch.Set "background" .Params.cover_image }}
+    {{- partial "header-background.html" . -}}
+
+    <div class="inner">
+        <div class="site-header-content author-header">
+            {{ if .Params.profile_image }}
+            <img class="author-profile-image" src="{{ .Params.profile_image }}" alt="{{.Params.name}}" />
+            {{ else }}
+            <span class="author-profile-image">{{- partial "icons/avatar.html" -}}</span>
+            {{ end }}
+            <div class="author-header-content">
+                <h1 class="site-title">{{.Params.name}}</h1>
+                {{if .Content}}
+                  <h2 class="author-bio">{{.Content}}</h2>
+                {{end}}
+                <div class="author-meta">
+                    {{ if .Params.location }}
+                    <div class="author-location">{{ .Params.location }}</div>
+                    {{ end }}
+
+                    <div class="author-stats">
+                        {{ if eq (len .Data.Pages) 0 }}
+                        No posts
+                        {{ else if eq (len .Data.Pages) 1 }}
+                        1 post
+                        {{ else }}
+                        {{ len .Data.Pages }} posts
+                        {{ end }}
+                    </div>
+
+                    {{ with .Params.website }}
+                    <span class="author-social-link"><a href="{{ . }}" target="_blank" rel="noopener">Website</a></span>
+                    {{ end }}
+
+                    {{ with .Params.twitter }}
+                    {{ $twitter_username := . }}
+                    {{ if hasPrefix $twitter_username "@" }}
+                        {{ $twitter_username = substr $twitter_username 1 }}
+                    {{ end }}
+                    <span class="author-social-link"><a href="https://twitter.com/{{ $twitter_username }}" target="_blank" rel="noopener">Twitter</a></span>
+                    {{ end }}
+
+                    {{ with .Params.facebook }}
+                    <span class="author-social-link"><a href="{{ . }}" target="_blank" rel="noopener">Facebook</a></span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="post-feed">
+            {{ range $index, $element := .Data.Pages }}
+            {{- partial "post-card.html" (dict "context" . "index" 2 "home" $.IsHome) -}}
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+{{ end }}

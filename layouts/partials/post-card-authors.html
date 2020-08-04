@@ -9,7 +9,7 @@
 
         {{ if .Params.profile_image }}
         <a href="{{ .Permalink }}" class="static-avatar">
-            <img class="author-profile-image" src="{{ .Params.profile_image }}" alt="{{ .Params.name }}" />
+            <img class="author-profile-image" src="/authors/{{.Params.slug}}/{{ .Params.profile_image }}" alt="{{ .Params.name }}" />
         </a>
         {{ else }}
         <a href="{{ .Permalink }}" class="static-avatar author-profile-image">{{- partial "icons/avatar.html" -}}</a>

@@ -1779,6 +1779,14 @@ body {
   border: none
 }
 
+.authors .author-card {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  line-height: 1.5em;
+  opacity: 1;
+}
+
 .basic-info .avatar-wrapper {
   position: relative;
   margin: 0;
@@ -2484,7 +2492,7 @@ body {
 }
 
 .author-social-link a {
-  color: #15171a;
+  color: #fff;
   font-weight: 600
 }
 
@@ -2871,6 +2879,9 @@ body {
   }
   .author-profile-image {
     background: #191b1f
+  }
+  .author-social-link a {
+    color: hsla(0, 0%, 100%, .75)
   }
   .post-card-byline-content a {
     color: hsla(0, 0%, 100%, .75)
