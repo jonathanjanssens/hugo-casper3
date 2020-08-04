@@ -9,11 +9,10 @@ min_version = "0.54.0"
 [author]
   name = "Jonathan Janssens"
   homepage = "https://jonathanjanssens.com"
-  repo = "https://github.com/jonathanjanssens/projects/hugo-casper3"
+  repo = "https://github.com/jonathanjanssens/hugo-casper3"
 
 [original]
   name = "Ghost"
   homepage = "https://ghost.org"
   repo = "https://github.com/TryGhost/Casper"
 
-  
