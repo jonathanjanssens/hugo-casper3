@@ -1,0 +1,19 @@
+<div class="author-card">
+    {{ if .Params.profile_image }}
+    <img class="author-profile-image" src="/authors/{{.Params.slug}}/{{ .Params.profile_image }}" alt="{{ .Params.name }}" />
+    {{ else }}
+    <div class="author-profile-image">{{- partial "icons/avatar.html" -}}</div>
+    {{ end }}
+    <div class="author-info">
+        {{ if .Content }}
+        <div class="bio">
+            <h2>{{ .Params.name }}</h2>
+            <p>{{ .Content }}</p>
+            <p><a href="{{ .Permalink }}">More posts</a> by {{ .Params.name }}.</p>
+        </div>
+        {{ else }}
+        <h2>{{ .Params.name }}</h2>
+        <p>Read <a href="{{ .Permalink }}">more posts</a> by this author.</p>
+        {{ end }}
+    </div>
+</div>

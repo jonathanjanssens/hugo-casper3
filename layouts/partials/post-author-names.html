@@ -1,0 +1,8 @@
+{{ $list := (.Params.authors) }}
+{{ $len := (len $list) }}
+
+{{- range $index, $author := $list }}
+{{- with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize $author)) }}
+    <a href="{{ .Permalink }}">{{ .Params.name }}</a>{{ if ne (add $index 1) $len }}, {{ end }}
+{{ end }}
+{{ end }}
