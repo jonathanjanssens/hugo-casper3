@@ -1,0 +1,38 @@
+on:
+  push:
+    paths:
+      - develop
+
+env:
+  HUGO_PACKAGE_URL: https://github.com/gohugoio/hugo/releases/download/v0.101.0/hugo_0.101.0_Linux-64bit.deb
+  CLOUDFLARE_PROJECT: hugo-casper3-dev
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Hugo
+        run: |
+          wget -q -O hugo.deb ${{ env.HUGO_PACKAGE_URL }}
+          sudo dpkg -i hugo.deb
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Wrangler
+        run: npm install -g wrangler
+      - name: Checkout Demo
+        uses: actions/checkout@v2
+        with:
+          repository: jonathanjanssens/hugo-casper3-demo
+      - name: Checkout Theme
+        uses: actions/checkout@v2
+        with:
+          path: ./themes/casper3-preview
+      - name: Build
+        run: hugo -t casper3-preview --baseUrl https://${{ github.run_id }}.${{ env.CLOUDFLARE_PROJECT }}.pages.dev
+      - name: Deploy
+        run: wrangler pages publish ./public --branch=${{ github.run_id }} --commit-hash=${{ github.sha }} --project-name=${{ env.CLOUDFLARE_PROJECT }} --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
